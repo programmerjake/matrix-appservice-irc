@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    // Our tests are littered with them, change this once the situation is better
+    "noImplicitAny": false,
+  },
+  "include": [
+    "integ/**/*.ts",
+    "unit/**/*.ts",
+    "util/**/*.ts"
+  ],
+}
