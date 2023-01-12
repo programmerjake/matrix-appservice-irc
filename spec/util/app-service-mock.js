@@ -35,22 +35,11 @@ MockAppService.prototype._mockApiCall = async function mockApiCall(data, statusC
         }
     });
 
-    return new Promise((res, rej) => {
-        const response = createResponse({
-            eventEmitter: EventEmitter,
-        });
-        response.on('end', () => {
-            statusCallback(response._getStatusCode());
-            jsonCallback(response._getJSONData());
-            res();
-        });
-        this.provisionerRouter.handle(request, response, (err) => {
-            if (err) {
-                // Errors thrown from the provisioner are in the form of [err, request]
-                rej(err[0]);
-            }
-        });
+    const response = createResponse({
+        eventEmitter: EventEmitter,
     });
+    this.provisionerRouter.handle(request, response);
+    return response;
 }
 
 // Simulate a request to the link provisioning API

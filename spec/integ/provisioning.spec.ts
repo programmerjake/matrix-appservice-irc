@@ -330,7 +330,7 @@ describe("Provisioning API", function() {
                 await expectRequestToFailWith(
                     () => mockLink({matrix_room_id : null}, false, true),
                     ErrCode.BadValue,
-                    { errors: [{ field: 'matrix_room_id', message: 'is required' }]}
+                    "data must have required property 'matrix_room_id'"
                 )
             });
 
@@ -664,9 +664,7 @@ describe("Provisioning API", function() {
             });
 
             // Create a link
-            await env.mockAppService._link(
-                parameters, status, json
-            );
+            await env.mockAppService.link(parameters);
 
             await isLinked.promise;
 

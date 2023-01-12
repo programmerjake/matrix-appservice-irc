@@ -3,10 +3,11 @@
   "compilerOptions": {
     // Our tests are littered with them, change this once the situation is better
     "noImplicitAny": false,
+    "resolveJsonModule": true
   },
   "include": [
     "integ/**/*.ts",
     "unit/**/*.ts",
     "util/**/*.ts"
-  ],
+  ]
 }
